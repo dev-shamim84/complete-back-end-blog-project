@@ -39,7 +39,7 @@ export const UpdateBlogService = async(req)=>{
      const user_id = req.headers.user_id
      const BlogID = req.params.blogID
      const reqBody = req.body
-     if(!user_id && !reqBody) {
+     if(!user_id && !reqBody && !BlogID) {
        const error = new Error("You can not update!")
        error.StatusCode = 400
        throw error
