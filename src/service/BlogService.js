@@ -37,6 +37,7 @@ export const ReadBlogService = async(req)=>{
 export const UpdateBlogService = async(req)=>{
   try {
      const user_id = req.headers.user_id
+     const BlogID = req.params.blogID
      const reqBody = req.body
      if(!user_id && !reqBody) {
        const error = new Error("You can not update!")
@@ -44,9 +45,9 @@ export const UpdateBlogService = async(req)=>{
        throw error
      }
      const data = await BlogModel.updateOne(
-      {userID:user_id,},
+      {userID:user_id,_id:BlogID},
       {$set:reqBody},
-      {$upsert:true}
+      {$upsert:false}
     )
      return {status:true,messege:"Blog updated Successfully"}
    }catch(error){

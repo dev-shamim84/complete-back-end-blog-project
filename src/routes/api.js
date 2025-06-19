@@ -8,8 +8,6 @@ const router = express.Router()
 router.post("/Register",Register)
 router.post("/login",Login)
 router.post("/logout",Logout)
-
-
 // CURD 
 router.post("/createblog",AuthVerification,Blog)
 router.get("/readallblog",AuthVerification,ReaAllBlog)
